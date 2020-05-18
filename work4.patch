@@ -1,0 +1,507 @@
+Index: src/lxh/company/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Main.java	(date 1589804606600)
++++ src/lxh/company/Main.java	(date 1589804606600)
+@@ -0,0 +1,64 @@
++package lxh.company;
++
++public class Main {
++
++    public static void main(String[] args) {
++        Person person = new Person();
++        person.setAge("20");
++        person.setName("李四");
++        person.setId("201902200");
++        person.setSex("man");
++
++        person.detailMess();
++
++        Aircraft aircraft = new Aircraft();
++        aircraft.setId("aircraft1");
++        person.transportMethod(aircraft);
++        System.out.println("---------------------------------------------");
++
++        Airship airship = new Airship();
++        airship.setId("airship1");
++        person.transportMethod(airship);
++        System.out.println("---------------------------------------------");
++
++        Automobile automobile = new Automobile();
++        automobile.setId("automobile1");
++        person.transportMethod(automobile);
++        System.out.println("---------------------------------------------");
++
++        Bicycle bicycle = new Bicycle();
++        bicycle.setId("bicycle1");
++        person.transportMethod(bicycle);
++        System.out.println("---------------------------------------------");
++
++        HotAirBallon hotAirBallon = new HotAirBallon();
++        hotAirBallon.setId("hotAirballon1");
++        person.transportMethod(hotAirBallon);
++        System.out.println("---------------------------------------------");
++
++        Hovercraft hovercraft = new Hovercraft();
++        hovercraft.setId("hovercraft1");
++        person.transportMethod(hovercraft);
++        System.out.println("---------------------------------------------");
++
++        Motorcycle motorcycle = new Motorcycle();
++        motorcycle.setId("motorcycle1");
++        person.transportMethod(motorcycle);
++        System.out.println("---------------------------------------------");
++
++        Submarine submarine = new Submarine();
++        submarine.setId("submarine1");
++        person.transportMethod(submarine);
++        System.out.println("---------------------------------------------");
++
++        Train train = new Train();
++        train.setId("train1");
++        person.transportMethod(train);
++        System.out.println("---------------------------------------------");
++
++
++        Ship ship = new Ship();
++        ship.setId("ship1");
++        person.transportMethod(ship);
++    }
++}
+Index: src/lxh/company/transport.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/transport.java	(date 1589803658914)
++++ src/lxh/company/transport.java	(date 1589803658914)
+@@ -0,0 +1,69 @@
++package lxh.company;
++
++import java.util.Date;
++
++public abstract class transport {
++
++    private String ownership;
++    private String GPSPosition;
++    private String price;
++
++    public String getOwnership() {
++        return ownership;
++    }
++
++    public void setOwnership(String ownership) {
++        this.ownership = ownership;
++    }
++
++    public String getGPSPosition() {
++        return GPSPosition;
++    }
++
++    public void setGPSPosition(String GPSPosition) {
++        this.GPSPosition = GPSPosition;
++    }
++
++    public String getPrice() {
++        return price;
++    }
++
++    public void setPrice(String price) {
++        this.price = price;
++    }
++
++    public Date getDataOfPurchase() {
++        return dataOfPurchase;
++    }
++
++    public void setDataOfPurchase(Date dataOfPurchase) {
++        this.dataOfPurchase = dataOfPurchase;
++    }
++
++    public String getId() {
++        return id;
++    }
++
++    public void setId(String id) {
++        this.id = id;
++    }
++
++    private Date dataOfPurchase;
++    private String id;
++
++    public void Transport(){
++
++    }
++
++    public void Transport(String s){
++
++    }
++
++    public abstract void drivingMethod();
++
++    public abstract void load();
++
++    public abstract void maintain();
++
++    public abstract void addGas();
++}
+Index: src/lxh/company/LandTransport.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/LandTransport.java	(date 1589803521877)
++++ src/lxh/company/LandTransport.java	(date 1589803521877)
+@@ -0,0 +1,27 @@
++package lxh.company;
++
++public class LandTransport extends transport{
++
++    @Override
++    public void drivingMethod() {
++        System.out.println("LandTransport add oil");
++    }
++
++    @Override
++    public void load() {
++        System.out.println("LandTransport load");
++
++    }
++
++    @Override
++    public void maintain() {
++        System.out.println("LandTransport maintain");
++
++    }
++
++    @Override
++    public void addGas() {
++        System.out.println("LandTransport add gas");
++
++    }
++}
+Index: src/lxh/company/MaritimeMeansOfTransport.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/MaritimeMeansOfTransport.java	(date 1589803521884)
++++ src/lxh/company/MaritimeMeansOfTransport.java	(date 1589803521884)
+@@ -0,0 +1,26 @@
++package lxh.company;
++
++public class MaritimeMeansOfTransport extends transport{
++    @Override
++    public void drivingMethod() {
++        System.out.println("MaritimeMeansOfTransport add oil");
++    }
++
++    @Override
++    public void load() {
++        System.out.println("MaritimeMeansOfTransport load");
++
++    }
++
++    @Override
++    public void maintain() {
++        System.out.println("MaritimeMeansOfTransport maintain");
++
++    }
++
++    @Override
++    public void addGas() {
++        System.out.println("MaritimeMeansOfTransport add gas");
++
++    }
++}
+Index: src/lxh/company/AirTransport.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/AirTransport.java	(date 1589803484428)
++++ src/lxh/company/AirTransport.java	(date 1589803484428)
+@@ -0,0 +1,26 @@
++package lxh.company;
++
++public class AirTransport extends transport{
++    @Override
++    public void drivingMethod() {
++        System.out.println("AirTransport add oil");
++    }
++
++    @Override
++    public void load() {
++        System.out.println("AirTransport load");
++
++    }
++
++    @Override
++    public void maintain() {
++        System.out.println("AirTransport maintain");
++
++    }
++
++    @Override
++    public void addGas() {
++        System.out.println("AirTransport add gas");
++
++    }
++}
+Index: src/lxh/company/Bicycle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Bicycle.java	(date 1589803910497)
++++ src/lxh/company/Bicycle.java	(date 1589803910497)
+@@ -0,0 +1,10 @@
++package lxh.company;
++
++public class Bicycle extends LandTransport {
++    public void Bicycle(){
++
++    }
++    public void Bicycle(Bicycle bicycle){
++        System.out.println("It's "+getId());
++    }
++}
+Index: src/lxh/company/Automobile.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Automobile.java	(date 1589803910489)
++++ src/lxh/company/Automobile.java	(date 1589803910489)
+@@ -0,0 +1,10 @@
++package lxh.company;
++
++public class Automobile extends LandTransport {
++    public void Automobile(){
++
++    }
++    public void Automobile(Automobile automobile){
++        System.out.println("It's "+getId());
++    }
++}
+Index: src/lxh/company/Motorcycle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Motorcycle.java	(date 1589803910466)
++++ src/lxh/company/Motorcycle.java	(date 1589803910466)
+@@ -0,0 +1,11 @@
++package lxh.company;
++
++public class Motorcycle extends LandTransport {
++    public void Motorcycle(){
++
++    }
++    public void Motorcycle(Motorcycle motorcycle){
++        System.out.println("It's "+getId());
++    }
++
++}
+Index: src/lxh/company/Train.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Train.java	(date 1589803910443)
++++ src/lxh/company/Train.java	(date 1589803910443)
+@@ -0,0 +1,10 @@
++package lxh.company;
++
++public class Train extends LandTransport {
++    public void Train(){
++
++    }
++    public void Train(Train train){
++        System.out.println("It's "+getId());
++    }
++}
+Index: src/lxh/company/HotAirBallon.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/HotAirBallon.java	(date 1589803910450)
++++ src/lxh/company/HotAirBallon.java	(date 1589803910450)
+@@ -0,0 +1,10 @@
++package lxh.company;
++
++public class HotAirBallon extends  AirTransport {
++    public void HotAirBallon(){
++
++    }
++    public void HotAirBallon(HotAirBallon hotAirBallon){
++        System.out.println("It's "+getId());
++    }
++}
+Index: src/lxh/company/Airship.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Airship.java	(date 1589803910458)
++++ src/lxh/company/Airship.java	(date 1589803910458)
+@@ -0,0 +1,10 @@
++package lxh.company;
++
++public class Airship extends  AirTransport {
++    public void Airship(){
++
++    }
++    public void Airship(Airship airship){
++        System.out.println("It's "+getId());
++    }
++}
+Index: src/lxh/company/Hovercraft.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Hovercraft.java	(date 1589803910482)
++++ src/lxh/company/Hovercraft.java	(date 1589803910482)
+@@ -0,0 +1,10 @@
++package lxh.company;
++
++public class Hovercraft extends MaritimeMeansOfTransport {
++    public void Hovercraft(){
++
++    }
++    public void Hovercraft(Hovercraft hovercraft){
++        System.out.println("It's "+getId());
++    }
++}
+Index: src/lxh/company/Aircraft.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Aircraft.java	(date 1589803718109)
++++ src/lxh/company/Aircraft.java	(date 1589803718109)
+@@ -0,0 +1,9 @@
++package lxh.company;
++
++public class Aircraft extends  AirTransport{
++
++    public void aircraft(){}
++    public void aircraft(Aircraft aircraft){
++        System.out.println("It's "+getId());
++    }
++}
+Index: src/lxh/company/Submarine.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Submarine.java	(date 1589803910473)
++++ src/lxh/company/Submarine.java	(date 1589803910473)
+@@ -0,0 +1,10 @@
++package lxh.company;
++
++public class Submarine extends MaritimeMeansOfTransport {
++    public void Submarine(){
++
++    }
++    public void Submarine(Submarine submarine){
++        System.out.println("It's "+getId());
++    }
++}
+Index: src/lxh/company/Ship.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Ship.java	(date 1589803910435)
++++ src/lxh/company/Ship.java	(date 1589803910435)
+@@ -0,0 +1,10 @@
++package lxh.company;
++
++public class Ship extends MaritimeMeansOfTransport {
++    public void Ship(){
++
++    }
++    public void Ship(Ship ship){
++        System.out.println("It's "+getId());
++    }
++}
+Index: src/lxh/company/Person.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/lxh/company/Person.java	(date 1589804377806)
++++ src/lxh/company/Person.java	(date 1589804377806)
+@@ -0,0 +1,67 @@
++package lxh.company;
++
++import com.sun.jdi.connect.Transport;
++
++public class Person {
++    private String id;
++    private String name;
++    private String sex;
++    private String age;
++
++    public void detailMess(){
++        System.out.println("I'm "+name+' '+id+" "+ sex +' ' +age);
++    }
++
++    public void transportMethod(AirTransport airTransport){
++        airTransport.drivingMethod();
++        airTransport.addGas();
++        airTransport.load();
++        airTransport.maintain();
++    }
++
++    public void transportMethod(LandTransport landTransport){
++        landTransport.drivingMethod();
++        landTransport.addGas();
++        landTransport.load();
++        landTransport.maintain();
++    }
++
++    public void transportMethod(MaritimeMeansOfTransport maritimeMeansOfTransport){
++        maritimeMeansOfTransport.drivingMethod();
++        maritimeMeansOfTransport.addGas();
++        maritimeMeansOfTransport.load();
++        maritimeMeansOfTransport.maintain();
++    }
++
++    public String getId() {
++        return id;
++    }
++
++    public void setId(String id) {
++        this.id = id;
++    }
++
++    public String getName() {
++        return name;
++    }
++
++    public void setName(String name) {
++        this.name = name;
++    }
++
++    public String getSex() {
++        return sex;
++    }
++
++    public void setSex(String sex) {
++        this.sex = sex;
++    }
++
++    public String getAge() {
++        return age;
++    }
++
++    public void setAge(String age) {
++        this.age = age;
++    }
++}
